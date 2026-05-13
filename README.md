@@ -1,5 +1,7 @@
 <img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/c0d03a49-ac75-427a-b40d-f951669b60ee" />
-<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/f6a84573-b032-493b-959a-9b3340671843" />
+Olmeda Castillo Jared Fernando
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/1150920d-610d-4e32-a4d4-492558223228" />
+Almanza Castilla Dylan Kareem
 
 Sistema de Autenticación
 

@@ -1,4 +1,4 @@
-<img width="100" height="200" alt="image" src="https://github.com/user-attachments/assets/c0d03a49-ac75-427a-b40d-f951669b60ee" />
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/c0d03a49-ac75-427a-b40d-f951669b60ee" />
 
 Sistema de Autenticación
 

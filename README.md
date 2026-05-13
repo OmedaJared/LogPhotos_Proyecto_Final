@@ -1,4 +1,6 @@
-# Trevi3 - Sistema de Autenticación
+<img width="100" height="200" alt="image" src="https://github.com/user-attachments/assets/c0d03a49-ac75-427a-b40d-f951669b60ee" />
+
+Sistema de Autenticación
 
 Este proyecto es un sistema básico de inicio de sesión, registro y recuperación de contraseña usando Flask y MongoDB Atlas.
 

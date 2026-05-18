@@ -2,6 +2,7 @@
 Olmeda Castillo Jared Fernando
 <img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/1150920d-610d-4e32-a4d4-492558223228" />
 Almanza Garcia Dylan Kareem
+24308060610588@cetis61.edu.mx
 
 Sistema de Autenticación
 

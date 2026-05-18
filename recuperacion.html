@@ -7,34 +7,32 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div style="max-width: 500px; margin: 50px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <h2>Recuperar cuenta</h2>
+    <div class="page-shell">
+        <section class="glass-card auth-card">
+            <div class="auth-header">
+                <div class="brand-mark">⟡</div>
+                <div>
+                    <h1>Recuperar cuenta</h1>
+                    <p>Obtén un enlace seguro para restablecer tu contraseña y volver a entrar.</p>
+                </div>
+            </div>
 
-        {% if error %}
-            <p style="color:#c00; text-align:center;">{{ error }}</p>
-        {% endif %}
+            {% if error %}
+                <div class="message error">{{ error }}</div>
+            {% endif %}
+            {% if message %}
+                <div class="message success">{{ message }}</div>
+            {% endif %}
 
-        {% if message %}
-            <p style="text-align:center;">
-                {{ message }}
-            </p>
-        {% endif %}
+            <form class="auth-form" method="POST">
+                <input type="email" name="email" placeholder="Correo electrónico" value="{{ email or '' }}" required class="form-field">
+                <button type="submit" class="btn btn-primary">Enviar enlace</button>
+            </form>
 
-        <form method="POST">
-            <input
-                type="email"
-                name="email"
-                placeholder="Correo electrónico"
-                value="{{ email or '' }}"
-                required
-                style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;"
-            />
-            <button type="submit" class="btn" style="width: 100%;">Enviar enlace</button>
-        </form>
-
-        <p style="text-align: center; margin-top: 20px;">
-            <a href="/login">Volver al inicio de sesión</a>
-        </p>
+            <div class="auth-footer">
+                <a href="/login">Volver al inicio de sesión</a>
+            </div>
+        </section>
     </div>
 </body>
 </html>

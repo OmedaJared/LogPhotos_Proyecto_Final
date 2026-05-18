@@ -1,6 +1,7 @@
 def main():
-    print("Hello from trevi3!")
+    print("Hello from photo-app!")
 
 
 if __name__ == "__main__":
     main()
+

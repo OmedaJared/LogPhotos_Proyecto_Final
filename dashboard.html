@@ -7,37 +7,84 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-<nav class="gbar">
-    <div class="gbar-left">
-        <span class="gtitle">Fotos</span>
-    </div>
-
-    <div class="gbar-right">
-        <a class="gbar-link" href="/logout">Cerrar sesión</a>
-    </div>
-</nav>
-
-<main class="gmain">
-    <section class="toolbar">
-        <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
-            <input class="file-input" type="file" name="file" required>
-            <button type="submit" class="btn">Subir</button>
-        </form>
-    </section>
-
-    <section class="gallery">
-        {% for file in files %}
-            <div class="photo-card" title="{{ file.filename }}">
-                {% if 'video' in file.type %}
-                    <video class="photo-media" controls src="{{ url_for('uploaded_file', filename=file.filename) }}"></video>
-                {% else %}
-                    <img class="photo-media" src="{{ url_for('uploaded_file', filename=file.filename) }}" alt="{{ file.filename }}">
-                {% endif %}
+    <div class="app-shell">
+        <nav class="topbar glass-card">
+            <div class="brand-row">
+                <span class="brand-mark">⟡</span>
+                <div>
+                    <span class="brand-label">Photo Vault</span>
+                    <p class="brand-subtitle">Tu galería futurista, accesible desde cualquier dispositivo.</p>
+                </div>
             </div>
-        {% endfor %}
-    </section>
-</main>
+            <a class="nav-button" href="/logout">Cerrar sesión</a>
+        </nav>
 
+        <main class="container">
+            <section class="glass-card hero-panel">
+                <div>
+                    <h1>Organiza tus fotos y enlaces con estilo</h1>
+                    <p>Gestiona archivos, videos y URLs desde una experiencia visual moderna y fluida.</p>
+                </div>
+            </section>
+
+            <section class="glass-card upload-panel">
+                <h2>Agregar archivo</h2>
+                <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="field-group">
+                        <label class="field-label">Archivo</label>
+                        <input class="form-field" type="file" name="file">
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label">O URL</label>
+                        <input class="form-field" type="url" name="url" placeholder="O ingresa una URL">
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label">Categoría</label>
+                        <select class="form-field" name="category">
+                            <option value="Fotos">Fotos</option>
+                            <option value="Videos">Videos</option>
+                            <option value="Links">Links</option>
+                            <option value="Archivos">Archivos</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subir</button>
+                </form>
+            </section>
+
+            {% for category in categories %}
+            <section class="glass-card gallery-section" id="{{ category }}">
+                <div class="section-header">
+                    <h2>{{ category }}</h2>
+                    <span class="badge">{{ category }}</span>
+                </div>
+                <div class="gallery">
+                    {% for file in files %}
+                        {% if file.category == category %}
+                            {% if file.type == 'link' %}
+                                <div class="photo-card link-card">
+                                    <a href="{{ file.url }}" target="_blank">{{ file.url }}</a>
+                                    <form action="/delete_link/{{ file._id }}" method="post" class="delete-form">
+                                        <button type="submit" class="delete-btn">×</button>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <div class="photo-card" title="{{ file.filename }}">
+                                    {% if 'video' in file.type %}
+                                        <video class="photo-media" controls src="{{ url_for('uploaded_file', filename=file.filename) }}"></video>
+                                    {% else %}
+                                        <img class="photo-media" src="{{ url_for('uploaded_file', filename=file.filename) }}" alt="{{ file.filename }}">
+                                    {% endif %}
+                                    <form action="/delete/{{ file.filename }}" method="post" class="delete-form">
+                                        <button type="submit" class="delete-btn">×</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+            {% endfor %}
+        </main>
+    </div>
 </body>
 </html>
